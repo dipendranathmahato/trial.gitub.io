@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Home | Dipendranath Mahato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/academicons/css/academicons.min.css" />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+  /* Mobile: keep Elevator Pitch in normal flow BELOW Memberships,
+     BUT still position it relative so the overlay stays on the video */
+  @media (max-width: 768px) {
+    .elevator-mini{
+      position: relative !important; /* NOT static */
+      right: auto !important;
+      left: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 210px !important;
+
+      margin-top: 1rem !important;
+      margin-bottom: 0.25rem !important;
+
+      z-index: auto !important;
+    }
+
+    .elevator-overlay{
+      position: absolute !important;
+      inset: 0 !important;
+    }
+  }
+    /* Make the hero card a positioning context for the elevator mini */
+.hero-card { position: relative; }
+
+/* Desktop: mini sits on the LOWER-RIGHT side INSIDE the hero-card */
+.elevator-mini{
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.1rem;   /* 🔥 this is the key change */
+  
+  width: 260px;
+  height: 150px;
+
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 30;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  transition: width 220ms ease, height 220ms ease, transform 220ms ease;
+}
+
+
+/* Expand on hover (same "mini->full" feel) */
+.elevator-mini:hover{
+  width: 520px;
+  height: 300px;
+  transform: translateY(2px);
+}
+
+/* Title sits above the video, attached to the elevator box */
+.elevator-title{
+  position: absolute;
+  top: -1.55rem;
+  left: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  letter-spacing: 0.2px;
+  pointer-events: none;
+}
+
+/* Overlay ALWAYS stays inside the elevator box */
+.elevator-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  z-index: 10;
+  background: rgba(0,0,0,0.25);
+  color: #f9fafb;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Mobile: put it BELOW memberships, in normal flow */
+@media (max-width: 768px){
+  .elevator-mini{
+    position: relative;   /* important: keeps overlay anchored */
+    right: auto;
+    top: auto;
+
+    width: 100%;
+    max-width: 100%;
+    height: 210px;
+
+    margin-top: 1rem;
+  }
+
+  .elevator-mini:hover{
+    width: 100%;
+    height: 210px; /* no hover-expand on mobile */
+    transform: none;
+  }
+}
+
+</style>
+
+
+</head>
+
+<body>
+  <div class="page">
+    <!-- ================= HEADER / NAV ================= -->
+    <header class="top-nav">
+      <div class="brand">
+        <img src="/assets/images/Tulane_University_Logo.svg.png" class="nav-logo" alt="Tulane University Logo" />
+        <a href="index.html" class="brand-name-link">
+          <span>Dipendranath Mahato</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="top-nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="utrgv.html">UTRGV</a>
+        <a href="presentations.html">Presentations</a>
+
+        <!-- Single dropdown (desktop), will flatten on mobile via CSS -->
+        <div class="dropdown">
+          <button class="dropbtn">
+            More <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="outreach-services.html">Outreach &amp; Services</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="resources.html">Resources</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="controls">
+        <!-- Dark mode toggle button -->
+        <button class="pill-button secondary theme-toggle" type="button" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+          <span>Dark</span>
+        </button>
+
+        <!-- CV button -->
+        <a href="cv.html" class="pill-button primary cv-button">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>CV</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ================= LAYOUT ================= -->
+    <main class="layout">
+      <!-- Sidebar-->
+      <aside class="sidebar">
+        <div class="avatar">
+          <img src="/assets/images/PXL_20250330_220427523-1575x2800-compressed.jpg" alt="Dipendranath Mahato" />
+          <!--<div class="status-chip">
+            IN JOB MARKET
+          </div>-->
+        </div>
+
+        <div class="name">Dipendranath Mahato</div>
+        <div class="title">Lecturer in Mathematics</div>
+        <div class="affiliation">
+          <strong>The University of Texas Rio Grande Valley</strong><br />
+          Edinburg, Texas
+        </div>
+
+        <!-- Research area padded block -->
+        <div class="research-area-block">
+          <div class="research-area-title">
+            <i class="ai ai-academic-cap"></i>
+            <span>Research Areas</span>
+          </div>
+
+          <div class="research-chips">
+            <a href="research.html#commutative" class="chip">Commutative Algebra</a>
+            <a href="research.html#algebraic-geometry" class="chip">Algebraic Geometry</a>
+            <a href="research.html#combinatorial" class="chip">Combinatorial Algebra</a>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Contact</h3>
+          <ul class="info-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <span><a href="mailto:dmahato@tulane.edu">dmahato@tulane.edu</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <span><a href="mailto:dipendranathmahato13@gmail.com">dipendranathmahato13@gmail.com</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-building"></i>
+              <span>Office 416-J, Gibson Hall<br />Department of Mathematics</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Edinburg, Texas, USA</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Online</h3>
+          <div class="social-links">
+            <a href="https://github.com/dipendranathmahato" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=dRoXm28AAAAJ" aria-label="Google Scholar">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+            <a href="https://orcid.org/0000-0003-4122-2622" aria-label="ORCID">
+              <i class="fa-brands fa-orcid"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dipendranathmahato" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.researchgate.net/profile/Dipendranath-Mahato-2" aria-label="ResearchGate">
+              <i class="fa-brands fa-researchgate"></i>
+            </a>
+            <a href="https://arxiv.org/search/?query=Mahato%2C+Dipendranath&searchtype=author&abstracts=show&order=-announced_date_first&size=50" aria-label="arXiv">
+              <i class="ai ai-arxiv"></i>
+            </a>
+            <a href="https://tulane.academia.edu/DipendranathMahato" aria-label="Academia">
+              <i class="ai ai-academia"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main HOME content -->
+      <section class="main">
+        <a href="utrgv.html" class="current-role-banner" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;margin-bottom:1rem;border:1px solid var(--border);border-radius:16px;text-decoration:none;background:var(--card-bg);">
+          <span><strong>Now at UTRGV · Edinburg, Texas</strong><br><small style="color:var(--text-muted)">Current courses, office hours, and student resources</small></span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <!-- Hero -->
+        <section class="hero-card" id="home">
+          <div class="hero-inner">
+            <div class="hero-topline">
+              <i class="fa-solid fa-pencil"></i>
+              <span>Personal Bio</span>
+            </div>
+
+            <h1 class="hero-title">Welcome to my Personal Website.</h1>
+
+            <p class="hero-subtitle" style="margin-bottom:0.35rem;">
+              Hi...I am
+              <span style="color:#F7F7F7; font-weight:700;">Dipendranath Mahato</span>
+              (দীপেন্দ্রনাথ মাহাতো), aka.
+              <span style="color:#F7F7F7; font-weight:700;">DIPEN</span>.
+            </p>
+
+            <p class="hero-subtitle" style="margin-top:0.7rem; margin-bottom:0.7rem; font-size:0.9em;">
+              <strong><i class="fa-solid fa-briefcase"></i> Current Appoinment:</strong>
+              <span style="
+                line-height:1.4;
+                color:#6ee7b7;
+                font-weight:700;
+                font-size:0.9em;
+              ">
+                Lecturer at <u>The University of Texas Rio Grande Valley</u>, Edinburg, Texas.
+              </span>
+            </p>
+
+            <div class="hero-meta" style="row-gap:0.25rem;">
+              <span style="display:block; line-height:1.35; margin-bottom:0.2rem; color:#F7F7F7;">
+                I completed my Ph.D. degree in Mathematics at <a href="https://www.math.tulane.edu" style="color:#6ee7b7; font-weight:700; text-decoration:underline; text-underline-offset:3px;"><strong>Tulane University</strong></a> under the supervision of <a href="https://www.math.tulane.edu/~tai/"
+                 style="color:#6ee7b7; font-weight:700; text-decoration:underline; text-underline-offset:3px;">
+                Prof. Tài Huy Hà</a>. My primary research interests lie in Commutative Algebra, Algebraic Geometry, Combinatorial Algebra. The following are the problems of my interest.
+              </span>
+
+            <div class="hero-meta" style="margin-top:0.9rem;">
+
+            <!-- ===== LEFT CONTENT (LOCKED) ===== -->
+            <div class="hero-left-content">
+          
+              <h3 style="color:#d1d5db; margin:0 0 0.5rem 0;">
+                <u>Research Interests</u>:
+              </h3>
+          
+              <ul class="info-list" style="color:#e5e7eb; margin-top:0; margin-bottom:0.8rem;">
+                <li>• Symbolic and Rational Symbolic Powers of Ideals</li>
+                <li>• Fat-point Schemes &amp; Interpolation</li>
+                <li>• Asymptotic Invariants</li>
+                <li>• Matroid Association to Interpolation</li>
+                <li>• Combinatorial Hodge Theory</li>
+              </ul>
+          
+             <!-- ===== Membership Pills ===== -->
+              <div style="margin-top:0.4rem; margin-bottom:1.8rem;">
+                <strong>Memberships:</strong>
+              
+                <div class="hero-actions" style="margin-top:0.5rem;">
+                  
+                  <!-- AMS -->
+                  <a href="https://www.ams.org/home/page"
+                     class="pill-button secondary"
+                     style="
+                       color:#6ee7b7;
+                       font-weight:700;
+                       border-color:#6ee7b7;
+                     ">
+                    <i class="fa-regular fa-id-card" style="color:#6ee7b7;"></i>
+                    AMS
+                  </a>
+              
+                  <!-- SIAM -->
+                  <a href="https://www.siam.org/"
+                     class="pill-button secondary"
+                     style="
+                       color:#6ee7b7;
+                       font-weight:700;
+                       border-color:#6ee7b7;
+                     ">
+                    <i class="fa-regular fa-id-card" style="color:#6ee7b7;"></i>
+                    SIAM
+                  </a>
+              
+                </div>
+              </div>
+
+          
+            </div>
+            <!-- ===== END LEFT CONTENT ===== -->
+          
+            <!-- ===== Elevator lives OUTSIDE left content ===== -->
+            <div class="elevator-mini" id="elevatorMini">
+              <div class="elevator-title">My Elevator Pitch Video</div>
+          
+              <iframe
+                id="elevatorIframe"
+                src="https://www.youtube.com/embed/IjW2gEaz4sQ?autoplay=1&mute=1"
+                allow="autoplay; encrypted-media"
+                style="width:100%; height:100%; border:0;">
+              </iframe>
+          
+              <div id="elevatorOverlay" class="elevator-overlay">
+                <i class="fa-solid fa-volume-high"></i> Click for sound
+              </div>
+            </div>
+          
+          </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===== QUICK ACCESS + UPCOMING EVENTS ROW ===== -->
+        <section class="home-cards">
+          <!-- Quick Links -->
+          <section class="card">
+            <div class="card-header">
+              <div>
+                <span class="card-title">
+                  <i class="fa-solid fa-bolt"></i> Quick Access
+                </span>
+                <div class="card-subtitle">
+                  Navigate directly to key information.
+                </div>
+              </div>
+              <span class="pill-label">HOME</span>
+            </div>
+
+            <div class="card-body">
+              <ul class="list-unstyled list-tight">
+                <li><a href="about.html">About Me</a> — short biography, interests, media spotlight, my math-family</li>
+                <li><a href="research.html">Research</a> — current projects, focus areas, publications</li>
+                <li><a href="teaching.html">Teaching</a>
+        <a href="utrgv.html">UTRGV</a> — courses and mentoring</li>
+                <li><a href="presentations.html">Presentations</a> — talks, poster presentations</li>
+                <li><a href="outreach-services.html">Outreach &amp; Services</a> — academic &amp; non-academic outreach</li>
+                <li><a href="blogs.html">Blogs</a> — my opinions</li>
+                <li><a href="resources.html">Resources</a> — nice math books, important websites</li>
+                <li><a href="cv.html">Curriculum Vitae</a> — full academic CV</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Upcoming Events (scrolling ticker) -->
+          <section class="card events-card">
+            <div class="card-header">
+              <div>
+                <span class="card-title">
+                  <i class="fa-solid fa-calendar-days"></i> Upcoming Events
+                </span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="events-ticker">
+                <div class="events-track">
+                  
+                  <div class="event-item">
+                    <div class="new-badge">NEW</div>
+                    <div class="event-date">May 18-29, 2026</div>
+                    <div class="event-title">CIMPA School - PASCA 2.0</div>
+                    <div class="event-location">Centro de Investigación en Matemáticas (CIMAT)</div>
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+         <div class="fade-in-quote" style="margin-top:1.2rem;">
+        
+          <span class="quote-chip-label" style="
+            display:inline-flex;
+            align-items:center;
+            gap:0.4rem;
+            padding:0.25rem 0.7rem;
+            border-radius:999px;
+            font-size:0.75rem;
+            font-weight:600;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
+          ">
+            <i class="fa-solid fa-quote-left"></i>
+            Favorite Quote
+          </span>
+        
+          <div class="quote-chip-box" style="
+            margin-top:0.6rem;
+            padding:0.8rem 1rem;
+            border-radius:12px;
+            line-height:1.5;
+            font-style:italic;
+          ">
+            “Pure mathematics is, in its way, the poetry of logical ideas.”
+            <div style="margin-top:0.35rem; font-style:normal; font-weight:600; opacity:0.9;">
+              — Albert Einstein
+            </div>
+        
+            <div style="margin-top:0.6rem;">
+              “The formulation of a problem is often more essential than its solution.”
+              <div style="margin-top:0.35rem; font-style:normal; font-weight:600; opacity:0.9;">
+                — Albert Einstein
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+
+        
+
+        <div class="footer">
+          © <span id="year"></span> Copyright @ Dipendranath Mahato —
+          Made on <a href="https://pages.github.com/">GitHub Pages</a>.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // ----- Footer year -----
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+  // ----- Mobile hamburger toggle -----
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks  = document.querySelector('.top-nav-links');
+
+  function closeMobileMenu() {
+    if (!navLinks) return;
+    navLinks.classList.remove('open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (navToggle && navLinks) {
+    // keep aria in sync (nice for accessibility)
+    navToggle.setAttribute('aria-expanded', 'false');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // close when clicking a link
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.tagName.toLowerCase() === 'a') closeMobileMenu();
+    });
+
+    // ✅ close while scrolling / swiping
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      if (!navLinks.classList.contains('open')) return;
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) > 8) closeMobileMenu(); // small threshold prevents jitter-close
+      lastY = y;
+    }, { passive: true });
+
+    // iOS/Android sometimes scroll via touchmove before scroll fires
+    window.addEventListener('touchmove', () => {
+      if (navLinks.classList.contains('open')) closeMobileMenu();
+    }, { passive: true });
+  }
+
+    // ----- "More" dropdown click toggle (desktop; CSS flattens on mobile) -----
+    const dropdown = document.querySelector('.dropdown');
+    const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
+
+    if (dropbtn) {
+      dropbtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dropdown.classList.toggle('dropdown-open');
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (dropdown && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('dropdown-open');
+      }
+    });
+
+    // ----- DARK MODE TOGGLE -----
+    const root = document.documentElement; // <html>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const THEME_KEY = 'dm-theme';
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+
+      if (!themeToggle) return;
+
+      const icon = themeToggle.querySelector('i');
+      const label = themeToggle.querySelector('span');
+
+      if (theme === 'dark') {
+        if (icon) icon.className = 'fa-solid fa-sun';
+        if (label) label.textContent = 'Light';
+      } else {
+        if (icon) icon.className = 'fa-solid fa-moon';
+        if (label) label.textContent = 'Dark';
+      }
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    const initialTheme = (savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : 'light';
+
+    applyTheme(initialTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    }
+  </script>
+
+  <script>
+  (function () {
+    const overlay = document.getElementById('elevatorOverlay');
+    const iframe  = document.getElementById('elevatorIframe');
+
+    if (!overlay || !iframe) return;
+
+    function ytCommand(func, args=[]) {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func, args }),
+        '*'
+      );
+    }
+
+    overlay.addEventListener('click', () => {
+      // Click is a user gesture => browsers allow unmute
+      ytCommand('unMute');
+      ytCommand('setVolume', [70]);
+      ytCommand('playVideo');
+
+      // Hide overlay after enabling sound
+      overlay.style.display = 'none';
+    });
+  })();
+</script>
+
+
+</body>
+</html>

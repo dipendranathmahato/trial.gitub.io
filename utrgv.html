@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTRGV Teaching | Dipendranath Mahato</title>
+  <meta name="description" content="Current UTRGV teaching, courses, office hours, and course resources for Dipendranath Mahato." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons/css/academicons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
+<header class="top-nav">
+  <div class="brand"><a href="index.html" class="brand-name-link"><span>Dipendranath Mahato</span></a></div>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  <nav class="top-nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="research.html">Research</a><a href="teaching.html">Teaching</a><a href="utrgv.html" class="active">UTRGV</a><a href="presentations.html">Presentations</a>
+    <div class="dropdown"><button class="dropbtn">More <i class="fa-solid fa-chevron-down"></i></button><div class="dropdown-content"><a href="outreach-services.html">Outreach &amp; Services</a><a href="blogs.html">Blogs</a><a href="resources.html">Resources</a></div></div>
+  </nav>
+  <div class="controls"><button class="pill-button secondary theme-toggle" type="button" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i><span>Dark</span></button><a href="cv.html" class="pill-button primary cv-button"><i class="fa-solid fa-file-lines"></i><span>CV</span></a></div>
+</header>
+<main class="layout">
+<aside class="sidebar">
+  <div class="avatar"><img src="/assets/images/PXL_20250330_220427523-1575x2800-compressed.jpg" alt="Dipendranath Mahato" /></div>
+  <div class="name">Dipendranath Mahato</div><div class="title">Lecturer in Mathematics</div>
+  <div class="affiliation"><strong>The University of Texas Rio Grande Valley</strong><br/>Edinburg, Texas</div>
+  <div class="research-area-block"><div class="research-area-title"><i class="ai ai-academic-cap"></i><span>Research Areas</span></div><div class="research-chips"><a href="research.html#commutative" class="chip">Commutative Algebra</a><a href="research.html#algebraic-geometry" class="chip">Algebraic Geometry</a><a href="research.html#combinatorial" class="chip">Combinatorial Algebra</a></div></div>
+  <div class="sidebar-section"><h3>Current</h3><ul class="info-list"><li><i class="fa-solid fa-location-dot"></i><span>Edinburg, Texas, USA</span></li><li><i class="fa-regular fa-envelope"></i><span><a href="mailto:dipendranathmahato13@gmail.com">dipendranathmahato13@gmail.com</a></span></li></ul></div>
+  <div class="sidebar-section"><h3>Quick links</h3><div class="sidebar-links"><a href="#courses">Current courses</a><a href="#hours">Office hours</a><a href="#resources">Course library</a><a href="teaching.html">Teaching history</a></div></div>
+</aside>
+<section class="main">
+  <section class="utrgv-hero"><div class="utrgv-kicker"><i class="fa-solid fa-building-columns"></i>UTRGV · Teaching Hub</div><h1>Current Teaching</h1><p>A dedicated home for my current courses at The University of Texas Rio Grande Valley, with course resources, office-hour information, and external document links kept in one easy-to-update place.</p><div class="utrgv-hero-meta"><span><i class="fa-regular fa-calendar"></i> <b id="currentTerm">Fall 2026</b></span><span><i class="fa-solid fa-location-dot"></i> <b id="currentLocation">Edinburg, Texas, USA</b></span><span><i class="fa-solid fa-link"></i> Box / Dropbox ready</span></div></section>
+  <section class="utrgv-section" id="courses"><div class="utrgv-section-heading"><div><h2>Current Courses</h2><p>Course cards are generated from one data file.</p></div></div><div class="utrgv-course-grid" id="utrgvCourseGrid"></div></section>
+  <div class="utrgv-two-col">
+    <section class="utrgv-section" id="hours"><div class="utrgv-section-heading"><div><h2>Office Hours</h2><p>Fall 2026</p></div></div><div class="utrgv-info-card"><ul id="officeHoursList"></ul></div></section>
+    <section class="utrgv-section"><div class="utrgv-section-heading"><div><h2>For Students</h2><p>Fast access without clutter.</p></div></div><div class="utrgv-info-card"><ul><li><i class="fa-solid fa-graduation-cap"></i><span>Use Brightspace for official submissions and grades.</span></li><li><i class="fa-regular fa-file-lines"></i><span>Public notes and practice material can live on Box or Dropbox.</span></li><li><i class="fa-regular fa-calendar-check"></i><span>Semester information stays separate from my research pages.</span></li></ul></div></section>
+  </div>
+  <section class="utrgv-section" id="resources"><div class="utrgv-section-heading"><div><h2>Course Library</h2><p>Readable external links instead of storing large PDFs in this repository.</p></div></div><div id="externalDocs"></div><div class="update-note"><strong>To update this page:</strong> edit <code>assets/js/site-data.js</code>. Add a course, change the semester, update office hours, or paste a Box/Dropbox share URL there—no layout editing required.</div></section>
+</section>
+</main>
+</div>
+<script src="assets/js/site-data.js"></script><script src="assets/js/utrgv.js"></script>
+<script>
+(function(){const root=document.documentElement,t=document.querySelector('.theme-toggle'),n=document.querySelector('.nav-toggle'),links=document.querySelector('.top-nav-links'),d=document.querySelector('.dropdown'),db=d?.querySelector('.dropbtn');function theme(x){root.setAttribute('data-theme',x);const i=t?.querySelector('i'),s=t?.querySelector('span');if(i)i.className=x==='dark'?'fa-solid fa-sun':'fa-solid fa-moon';if(s)s.textContent=x==='dark'?'Light':'Dark'}theme(localStorage.getItem('dm-theme')||'light');t?.addEventListener('click',()=>{const x=root.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('dm-theme',x);theme(x)});n?.addEventListener('click',()=>{const x=links.classList.toggle('open');n.setAttribute('aria-expanded',String(x))});db?.addEventListener('click',e=>{e.stopPropagation();d.classList.toggle('dropdown-open')});document.addEventListener('click',e=>{if(d&&!d.contains(e.target))d.classList.remove('dropdown-open')})})();
+</script>
+</body></html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Outreach &amp; Services | Dipendranath Mahato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/academicons/css/academicons.min.css" />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-specific styling (scoped so it won't affect other pages) -->
+  <style>
+    .outreach-page{
+      --os-bg: rgba(255,255,255,.62);
+      --os-surface: rgba(255,255,255,.85);
+      --os-border: rgba(15,23,42,.10);
+      --os-text: rgba(15,23,42,.94);
+      --os-muted: rgba(15,23,42,.66);
+      --os-accent: #0f766e; /* teal */
+      --os-shadow: 0 10px 28px rgba(2,6,23,.08);
+      --os-radius: 16px;
+    }
+    html[data-theme="dark"] .outreach-page{
+      --os-bg: rgba(17,24,39,.40);
+      --os-surface: rgba(17,24,39,.70);
+      --os-border: rgba(255,255,255,.11);
+      --os-text: rgba(255,255,255,.92);
+      --os-muted: rgba(255,255,255,.66);
+      --os-shadow: 0 10px 28px rgba(0,0,0,.35);
+      --os-accent: #5eead4; /* brighter teal so badge icons pop in dark mode */
+    }
+
+    .outreach-page .content-wrap{ padding: 4px 4px 30px; }
+
+    .os-hero{
+      background: var(--os-bg);
+      border: 1px solid var(--os-border);
+      border-radius: var(--os-radius);
+      padding: 18px 18px 14px;
+      box-shadow: var(--os-shadow);
+      backdrop-filter: blur(10px);
+    }
+    .os-hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .os-title{
+      margin:0;
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+      color: var(--os-text);
+    }
+    .os-subtitle{
+      margin: 8px 0 0;
+      max-width: 72ch;
+      color: var(--os-muted);
+      line-height: 1.6;
+      font-size: .98rem;
+    }
+    .os-badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .os-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--os-border);
+      background: var(--os-surface);
+      color: var(--os-muted);
+      font-size: .86rem;
+      white-space: nowrap;
+    }
+    .os-badge i{ color: var(--os-accent); }
+
+    .os-kpis{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    @media (max-width: 900px){
+      .os-kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    .os-kpi{
+      border: 1px solid var(--os-border);
+      border-radius: 14px;
+      background: var(--os-surface);
+      padding: 12px;
+    }
+    .os-kpi .num{
+      font-weight: 750;
+      font-size: 1.05rem;
+      color: var(--os-text);
+      margin-bottom: 2px;
+    }
+    .os-kpi .lab{
+      font-size: .86rem;
+      color: var(--os-muted);
+      line-height: 1.35;
+    }
+
+    .os-grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items:start;
+    }
+    @media (max-width: 1000px){
+      .os-grid{ grid-template-columns: 1fr; }
+    }
+
+    .os-card{
+      background: var(--os-bg);
+      border: 1px solid var(--os-border);
+      border-radius: var(--os-radius);
+      padding: 14px;
+      box-shadow: var(--os-shadow);
+      backdrop-filter: blur(10px);
+    }
+    .os-card h2{
+      margin:0 0 8px;
+      font-size: 1.05rem;
+      color: var(--os-text);
+      letter-spacing: -0.01em;
+    }
+    .os-card p, .os-card li{
+      color: var(--os-muted);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    /* Tabs */
+    .os-tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 10px 0 10px;
+    }
+    .os-tabbtn{
+      cursor:pointer;
+      border: 1px solid var(--os-border);
+      background: var(--os-surface);
+      color: var(--os-muted);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: .9rem;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition: transform .05s ease, border-color .15s ease;
+    }
+    .os-tabbtn:hover{ border-color: rgba(15,118,110,.40); }
+    .os-tabbtn:active{ transform: scale(.99); }
+    .os-tabbtn[aria-selected="true"]{
+      color: var(--os-text);
+      border-color: rgba(15,118,110,.58);
+      box-shadow: 0 1px 0 rgba(15,118,110,.20);
+    }
+    .os-panel{ display:none; }
+    .os-panel[data-open="true"]{ display:block; }
+
+    /* Timeline */
+    .os-timeline{
+      list-style:none;
+      margin: 0;
+      padding: 0;
+    }
+    .os-item{
+      display:grid;
+      grid-template-columns: 150px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--os-border);
+    }
+    .os-item:first-child{ border-top:0; }
+    .os-when{
+      font-size: .85rem;
+      color: var(--os-muted);
+      line-height: 1.25;
+    }
+    .os-where{
+      font-weight: 750;
+      color: var(--os-text);
+    }
+    .os-role{
+      margin-top: 2px;
+      color: var(--os-muted);
+      font-size: .9rem;
+    }
+    .os-bullets{
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+    .os-bullets li{ margin: 6px 0; }
+    @media (max-width: 650px){
+      .os-item{ grid-template-columns:1fr; }
+    }
+
+    /* Compact info chips */
+    .os-chiprow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .os-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--os-border);
+      background: var(--os-surface);
+      color: var(--os-muted);
+      font-size: .88rem;
+    }
+    .os-chip i{ color: var(--os-accent); }
+
+    /* Sidebar list */
+    .os-side-list{
+      list-style:none;
+      padding-left:0;
+      margin: 8px 0 0;
+    }
+    .os-side-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 8px 0;
+      border-top: 1px solid var(--os-border);
+    }
+    .os-side-list li:first-child{ border-top:0; }
+    .os-side-list i{ color: var(--os-accent); margin-top: 2px; }
+
+    .os-mini{
+      font-size: .9rem;
+      color: var(--os-muted);
+      margin: 10px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ================= HEADER / NAV ================= -->
+    <header class="top-nav">
+      <div class="brand">
+        <img src="/assets/images/Tulane_University_Logo.svg.png"
+             class="nav-logo"
+             alt="Tulane University Logo" />
+        <a href="index.html" class="brand-name-link">
+          <span>Dipendranath Mahato</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="top-nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="utrgv.html">UTRGV</a>
+        <a href="presentations.html">Presentations</a>
+
+        <div class="dropdown">
+          <button class="dropbtn">
+            More <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="outreach-services.html">Outreach &amp; Services</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="resources.html">Resources</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="controls">
+        <button class="pill-button secondary theme-toggle" type="button" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+          <span>Dark</span>
+        </button>
+
+        <a href="cv.html" class="pill-button primary cv-button">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>CV</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ================= LAYOUT ================= -->
+    <main class="layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="avatar">
+          <img src="/assets/images/PXL_20250330_220427523-1575x2800-compressed.jpg"
+               alt="Dipendranath Mahato" />
+          <!--<div class="status-chip">
+            IN JOB MARKET
+          </div>-->
+        </div>
+
+        <div class="name">Dipendranath Mahato</div>
+        <div class="title">Ph.D. Candidate in Mathematics</div>
+        <div class="affiliation">
+          <strong>Tulane University</strong><br />
+          Department of Mathematics
+        </div>
+
+        <div class="research-area-block">
+          <div class="research-area-title">
+            <i class="ai ai-academic-cap"></i>
+            <span>Research Areas</span>
+          </div>
+          <div class="research-chips">
+            <a href="research.html#commutative" class="chip">Commutative Algebra</a>
+            <a href="research.html#algebraic-geometry" class="chip">Algebraic Geometry</a>
+            <a href="research.html#combinatorial" class="chip">Combinatorial Algebra</a>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Contact</h3>
+          <ul class="info-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <span><a href="mailto:dmahato@tulane.edu">dmahato@tulane.edu</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <span><a href="mailto:dipendranathmahato13@gmail.com">dipendranathmahato13@gmail.com</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-building"></i>
+              <span>Office 416-J, Gibson Hall<br />Department of Mathematics</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>New Orleans-70118, LA, USA</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Online</h3>
+          <div class="social-links">
+            <a href="https://github.com/dipendranathmahato" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=dRoXm28AAAAJ" aria-label="Google Scholar">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+            <a href="https://orcid.org/0000-0003-4122-2622" aria-label="ORCID">
+              <i class="fa-brands fa-orcid"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dipendranathmahato" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.researchgate.net/profile/Dipendranath-Mahato-2" aria-label="ResearchGate">
+              <i class="fa-brands fa-researchgate"></i>
+            </a>
+            <a href="https://arxiv.org/search/?query=Mahato%2C+Dipendranath&searchtype=author&abstracts=show&order=-announced_date_first&size=50" aria-label="arXiv">
+              <i class="ai ai-arxiv"></i>
+            </a>
+            <a href="https://tulane.academia.edu/DipendranathMahato" aria-label="Academia">
+              <i class="ai ai-academia"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <section class="content outreach-page">
+        <div class="content-wrap">
+
+          <!-- HERO -->
+          <div class="os-hero">
+            <div class="os-hero-top">
+              <div>
+                <h1 class="os-title">Outreach &amp; Services</h1>
+                <p class="os-subtitle">
+                  I enjoy building mathematical community through departmental service, student organizations,
+                  mentoring, tutoring, and outreach. Below I separate my <strong>academic service &amp; mentoring</strong>
+                  from <strong>non-academic community engagement</strong>.
+                </p>
+              </div>
+
+              <div class="os-badges">
+                <div class="os-badge"><i class="fa-solid fa-people-group"></i> Community building</div>
+                <div class="os-badge"><i class="fa-solid fa-chalkboard-user"></i> Mentoring</div>
+                <div class="os-badge"><i class="fa-solid fa-handshake-angle"></i> Outreach</div>
+              </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="os-kpis">
+              <div class="os-kpi">
+                <div class="num">Mentoring</div>
+                <div class="lab">DRP / Research Projects</div>
+              </div>
+              <div class="os-kpi">
+                <div class="num">ALTC</div>
+                <div class="lab">Math tutoring (1:1 &amp; groups)</div>
+              </div>
+              <div class="os-kpi">
+                <div class="num">K–12 STEM</div>
+                <div class="lab">GiST &amp; BATS Math Sections</div>
+              </div>
+              <div class="os-kpi">
+                <div class="num">Alumni</div>
+                <div class="lab">
+                  <a href="https://www.tezu.ernet.in/" target="_blank" rel="noopener noreferrer"
+                     style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">
+                    Tezpur University
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="os-grid">
+
+            <!-- MAIN CARD -->
+            <div class="os-card">
+              <h2>Service timeline</h2>
+              <p style="margin:0 0 8px 0;">
+                Use the tabs to switch between <strong>Academic</strong> service (mentoring, tutoring, organizations, outreach programs)
+                and <strong>Non-Academic</strong> community engagement.
+              </p>
+
+              <div class="os-tabs" role="tablist" aria-label="Outreach tabs">
+                <button class="os-tabbtn" role="tab" aria-selected="true" aria-controls="panel-academic" id="tab-academic">
+                  <i class="fa-solid fa-graduation-cap"></i> Academic
+                </button>
+                <button class="os-tabbtn" role="tab" aria-selected="false" aria-controls="panel-nonacademic" id="tab-nonacademic">
+                  <i class="fa-solid fa-people-group"></i> Non-Academic
+                </button>
+              </div>
+
+              <!-- ACADEMIC -->
+              <div class="os-panel" role="tabpanel" id="panel-academic" aria-labelledby="tab-academic" data-open="true">
+                <ul class="os-timeline">
+
+                  <!-- Reordered: Mentoring + Tutoring first -->
+                  <li class="os-item">
+                    <div class="os-when">Spring 2025</div>
+                    <div>
+                      <div class="os-where">TWOPLES — Directed Reading Program</div>
+                      <div class="os-role">Mentor (Undergraduate &amp Graduate Projects)</div>
+                      <ul class="os-bullets">
+                        <li>Directed reading focused on foundational theory and examples.</li>
+                        <li>Research-oriented mentoring.</li>
+                        <li>Problem-solving experience.</li>
+                        <li>Exposure to Math-Oriented Softwares (Maple, MATLAB, GeoGebra, Macaulay2).</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Fall 2023 – Present</div>
+                    <div>
+                      <div class="os-where">Academic Learning &amp; Tutoring Center (ALTC), Tulane University</div>
+                      <div class="os-role">Math Department Teaching Assistant</div>
+                      <ul class="os-bullets">
+                        <li>Facilitating problem-solving in one-on-one and small-group settings.</li>
+                        <li>Supporting courses including Calculus I–III, Statistics, Linear Algebra, and Real Analysis.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <!-- K–12 outreach (academic) -->
+                  <li class="os-item">
+                    <div class="os-when">Oct 2022; Apr 2023</div>
+                    <div>
+                      <div class="os-where">K–12 STEM Outreach (Tulane)</div>
+                      <div class="os-role">Math Section Leader — GiST (Girls in STEM at Tulane)</div>
+                      <ul class="os-bullets">
+                        <li>Welcomed 5th–7th grade students for hands-on STEM experiences.</li>
+                        <li>Used interactive math models and activities to introduce advanced ideas.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Apr 2024; Sep 2024</div>
+                    <div>
+                      <div class="os-where">K–12 STEM Outreach (Tulane)</div>
+                      <div class="os-role">Math Section Leader — BATS (Boys At Tulane in STEM)</div>
+                      <ul class="os-bullets">
+                        <li>Designed and ran activity stations focused on exploration and confidence-building.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <!-- Org leadership (reverse-chron-ish) -->
+                  <li class="os-item">
+                    <div class="os-when">Jun 2023 – Jun 2024</div>
+                    <div>
+                      <div class="os-where">AMS Tulane Student Chapter</div>
+                      <div class="os-role">President</div>
+                      <ul class="os-bullets">
+                        <li>Organized AMS/AWM faculty talks (Fall 2023, Spring 2024).</li>
+                        <li>Supported Annual Math BBQ (2023, 2024).</li>
+                        <li>Compiled alumni data for the graduate student chapter website.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">May 2022 – May 2023</div>
+                    <div>
+                      <div class="os-where">AMS Tulane Student Chapter</div>
+                      <div class="os-role">Treasurer</div>
+                      <ul class="os-bullets">
+                        <li>Supported community events and departmental engagement.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Jun 2022 – May 2023</div>
+                    <div>
+                      <div class="os-where">South Asian Graduate Association (SAGA), Tulane University</div>
+                      <div class="os-role">Vice President</div>
+                      <ul class="os-bullets">
+                        <li>Helped restart the association after COVID-19 and supported community programming.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <!-- Tezpur University service -->
+                  <li class="os-item">
+                    <div class="os-when">Jul 2023 – Present</div>
+                    <div>
+                      <div class="os-where">Tezpur University — Alumni Association</div>
+                      <div class="os-role">Secretary</div>
+                      <ul class="os-bullets">
+                        <li>Managing academic &amp; job allocation database.</li>
+                        <li>Organizer of the 1st Math Alumni Meet.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Aug 2019 – Jul 2020</div>
+                    <div>
+                      <div class="os-where">Training &amp; Placement Cell, Tezpur University</div>
+                      <div class="os-role">Departmental Coordinator</div>
+                      <ul class="os-bullets">
+                        <li>Managed academic &amp; job allocation database and coordinated department-level efforts.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Oct 2018 – Dec 2019; Jan 2020 – Jul 2020</div>
+                    <div>
+                      <div class="os-where">Department of Mathematical Sciences, Tezpur University</div>
+                      <div class="os-role">Departmental Coordinator; Volunteer</div>
+                      <ul class="os-bullets">
+                        <li>Organized math events for InSCIgnis (2019) and π-Day (2019 &amp; 2020 online).</li>
+                        <li>Organized/supervised math events and quizzes at the 2nd Assam Science Festival.</li>
+                        <li>Organized National Mathematics Day (online).</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">Oct 2018 – Dec 2019</div>
+                    <div>
+                      <div class="os-where">Students Science Council, Tezpur University</div>
+                      <div class="os-role">Departmental Representative</div>
+                      <ul class="os-bullets">
+                        <li>Volunteered in outreach programs associated with InSCIgnis (2019).</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="os-chiprow" aria-label="Academic tags">
+                  <span class="os-chip"><i class="fa-solid fa-chalkboard-user"></i> Mentoring</span>
+                  <span class="os-chip"><i class="fa-solid fa-graduation-cap"></i> Tutoring</span>
+                  <span class="os-chip"><i class="fa-solid fa-calendar-check"></i> Event organization</span>
+                  <span class="os-chip"><i class="fa-solid fa-children"></i> K–12 outreach</span>
+                </div>
+              </div>
+
+              <!-- NON-ACADEMIC -->
+              <div class="os-panel" role="tabpanel" id="panel-nonacademic" aria-labelledby="tab-nonacademic" data-open="false">
+                <ul class="os-timeline">
+                  <li class="os-item">
+                    <div class="os-when">May 2020</div>
+                    <div>
+                      <div class="os-where">Shanko (NGO) — Cyclone Amphan relief</div>
+                      <div class="os-role">Community kitchens (coastal areas near Kolkata)</div>
+                      <ul class="os-bullets">
+                        <li>Organized/supported community kitchens after Cyclone Amphan.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">2020 – 2021</div>
+                    <div>
+                      <div class="os-where">COVID-19 relief</div>
+                      <div class="os-role">Community support near Kolkata and surrounding districts</div>
+                      <ul class="os-bullets">
+                        <li>Support to local dwellers during phases 1–2.</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="os-item">
+                    <div class="os-when">May 2021</div>
+                    <div>
+                      <div class="os-where">Shanko (NGO) — Cyclone Yaas relief</div>
+                      <div class="os-role">Community kitchens (coastal areas near Kolkata)</div>
+                      <ul class="os-bullets">
+                        <li>Organized/supported community kitchens after Cyclone Yaas.</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="os-chiprow" aria-label="Non-academic tags">
+                  <span class="os-chip"><i class="fa-solid fa-hand-holding-heart"></i> Relief work</span>
+                  <span class="os-chip"><i class="fa-solid fa-people-group"></i> Community support</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT CARD -->
+            <aside class="os-card">
+              <h2>Memberships</h2>
+              <ul class="os-side-list">
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                  <div>
+                    <div style="font-weight:750; color: var(--os-text);">American Mathematical Society (AMS)</div>
+                    <div style="color: var(--os-muted); font-size: .92rem;">Member (2021–present)</div>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                  <div>
+                    <div style="font-weight:750; color: var(--os-text);">Society for Industrial and Applied Mathematics (SIAM)</div>
+                    <div style="color: var(--os-muted); font-size: .92rem;">Member (2021–present)</div>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                  <div>
+                    <div style="font-weight:750; color: var(--os-text);">Mathematical Association of America (MAA)</div>
+                    <div style="color: var(--os-muted); font-size: .92rem;">Member (2022–present)</div>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Removed: Get in Touch + CV buttons (as requested) -->
+
+              <!--<p class="os-mini">
+                If you want, I can also add a compact “Photos / Flyers / Outreach materials” gallery here (same site style).
+              </p>-->
+            </aside>
+
+          </div>
+        </div>
+
+
+        
+
+        <div class="footer">
+          © <span id="year"></span> Copyright @ Dipendranath Mahato —
+          Made on <a href="https://pages.github.com/">GitHub Pages</a>.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= SCRIPTS (same as your structural template) ================= -->
+  <script>
+    // ----- Footer year -----
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    // ----- Mobile hamburger toggle -----
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.querySelector('.top-nav-links');
+  
+    function closeMobileMenu() {
+      if (!navLinks) return;
+      navLinks.classList.remove('open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    }
+  
+    if (navToggle && navLinks) {
+      // keep aria in sync (nice for accessibility)
+      navToggle.setAttribute('aria-expanded', 'false');
+  
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+  
+      // close when clicking a link
+      navLinks.addEventListener('click', (event) => {
+        if (event.target.tagName.toLowerCase() === 'a') closeMobileMenu();
+      });
+  
+      // ✅ close while scrolling / swiping
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        if (!navLinks.classList.contains('open')) return;
+        const y = window.scrollY;
+        if (Math.abs(y - lastY) > 8) closeMobileMenu(); // small threshold prevents jitter-close
+        lastY = y;
+      }, { passive: true });
+  
+      // iOS/Android sometimes scroll via touchmove before scroll fires
+      window.addEventListener('touchmove', () => {
+        if (navLinks.classList.contains('open')) closeMobileMenu();
+      }, { passive: true });
+    }
+
+    // ----- "More" dropdown click toggle -----
+    const dropdown = document.querySelector('.dropdown');
+    const dropbtn  = dropdown ? dropdown.querySelector('.dropbtn') : null;
+
+    if (dropbtn) {
+      dropbtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dropdown.classList.toggle('dropdown-open');
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (dropdown && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('dropdown-open');
+      }
+    });
+
+    // ----- DARK MODE TOGGLE -----
+    const root        = document.documentElement; // <html>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const THEME_KEY   = 'dm-theme';
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+
+      if (!themeToggle) return;
+
+      const icon  = themeToggle.querySelector('i');
+      const label = themeToggle.querySelector('span');
+
+      if (theme === 'dark') {
+        if (icon) icon.className = 'fa-solid fa-sun';
+        if (label) label.textContent = 'Light';
+      } else {
+        if (icon) icon.className = 'fa-solid fa-moon';
+        if (label) label.textContent = 'Dark';
+      }
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    const initialTheme = savedTheme === 'dark' || savedTheme === 'light'
+      ? savedTheme
+      : 'light';
+
+    applyTheme(initialTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next    = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    }
+
+    // ----- Tabs: Academic vs Non-Academic -----
+    const tabs = [
+      { btn: 'tab-academic', panel: 'panel-academic' },
+      { btn: 'tab-nonacademic', panel: 'panel-nonacademic' }
+    ];
+
+    function setTab(activeBtnId){
+      tabs.forEach(({btn, panel}) => {
+        const b = document.getElementById(btn);
+        const p = document.getElementById(panel);
+        const on = (btn === activeBtnId);
+        if (b) b.setAttribute('aria-selected', on ? 'true' : 'false');
+        if (p) p.dataset.open = on ? 'true' : 'false';
+      });
+    }
+
+    tabs.forEach(({btn}) => {
+      const b = document.getElementById(btn);
+      if (b) b.addEventListener('click', () => setTab(btn));
+    });
+  </script>
+
+</body>
+</html>

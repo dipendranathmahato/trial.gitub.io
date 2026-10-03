@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resources | Dipendranath Mahato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/academicons/css/academicons.min.css" />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-local CSS: 2 columns + colorful + per-pill preview + 85% modal -->
+  <style>
+    /* Template uses .main */
+    .main { min-width: 0; }
+
+    /* soft colorful hero */
+    .res-hero {
+      border-radius: 18px;
+      padding: 16px 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      background:
+        radial-gradient(1200px 260px at 10% 0%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 240px at 90% 0%, rgba(59,130,246,.20), transparent 58%),
+        radial-gradient(900px 240px at 50% 120%, rgba(168,85,247,.14), transparent 55%),
+        rgba(255,255,255,.58);
+      box-shadow: 0 10px 24px rgba(0,0,0,.07);
+      margin-bottom: 12px;
+    }
+    html[data-theme="dark"] .res-hero{
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(1200px 260px at 10% 0%, rgba(34,197,94,.20), transparent 60%),
+        radial-gradient(900px 240px at 90% 0%, rgba(59,130,246,.24), transparent 58%),
+        radial-gradient(900px 240px at 50% 120%, rgba(168,85,247,.18), transparent 55%),
+        rgba(17,24,39,.56);
+      box-shadow: 0 12px 28px rgba(0,0,0,.28);
+    }
+    .res-hero h1{
+      margin: 0 0 6px 0;
+      font-size: 1.25rem;
+      letter-spacing: .2px;
+    }
+    .res-hero p{
+      margin: 0;
+      opacity: .85;
+      line-height: 1.5;
+      max-width: 78ch;
+    }
+
+    /* Search */
+    .res-tools{
+      margin: 12px 0 12px 0;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .res-search{
+      flex: 1 1 380px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    html[data-theme="dark"] .res-search{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,24,39,.44);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .res-search i{ opacity:.75; }
+    .res-search input{
+      width:100%;
+      border:none;
+      outline:none;
+      background:transparent;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: .95rem;
+      color: inherit;
+    }
+    .res-hint{
+      flex: 0 0 auto;
+      font-size: .88rem;
+      opacity: .78;
+      line-height: 1.3;
+    }
+
+    /* TWO columns: exactly the two sections */
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .cols{ grid-template-columns: 1fr; }
+    }
+
+    .col{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.58);
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
+    html[data-theme="dark"] .col{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(17,24,39,.52);
+      box-shadow: 0 12px 28px rgba(0,0,0,.24);
+    }
+
+    .col-head{
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.14), transparent 55%),
+        linear-gradient(135deg, rgba(34,197,94,.12), transparent 55%);
+    }
+    html[data-theme="dark"] .col-head{
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.18), transparent 55%),
+        linear-gradient(135deg, rgba(34,197,94,.14), transparent 55%);
+    }
+    .col-head h2{
+      margin: 0;
+      font-size: 1.0rem;
+      letter-spacing: .2px;
+    }
+    .col-head .meta{
+      font-size: .85rem;
+      opacity: .76;
+      white-space: nowrap;
+    }
+
+    /* Card-like pill rows (two buttons: Preview + Link) */
+    .pill-list{
+      padding: 12px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pill-row{
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.55);
+      padding: 10px 10px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .pill-row:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.07);
+    }
+    html[data-theme="dark"] .pill-row{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,24,39,.44);
+    }
+    html[data-theme="dark"] .pill-row:hover{
+      box-shadow: 0 14px 28px rgba(0,0,0,.26);
+    }
+
+    .pill-main{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .dot{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid rgba(0,0,0,.10);
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.70), rgba(255,255,255,.20)),
+        rgba(59,130,246,.14);
+      flex: 0 0 auto;
+    }
+    html[data-theme="dark"] .dot{
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.10), rgba(255,255,255,.02)),
+        rgba(59,130,246,.16);
+    }
+
+    .pill-title{
+      font-size: .92rem;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 420px;
+    }
+    @media (max-width: 1150px){
+      .pill-title{ max-width: 260px; }
+    }
+    @media (max-width: 980px){
+      .pill-title{ max-width: 60vw; }
+    }
+
+    .pill-actions{
+      display:flex;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .btn{
+      border-radius: 999px;
+      padding: 8px 10px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.62);
+      cursor:pointer;
+      font-size: .85rem;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      text-decoration:none;
+      color: inherit;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select: none;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    html[data-theme="dark"] .btn{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,24,39,.50);
+    }
+
+    .btn.preview{
+      border-color: rgba(59,130,246,.30);
+      background: rgba(59,130,246,.10);
+    }
+    html[data-theme="dark"] .btn.preview{
+      border-color: rgba(59,130,246,.36);
+      background: rgba(59,130,246,.14);
+    }
+
+    /* ✅ Small change: make buttons fully readable on click/focus */
+    .btn:focus,
+    .btn:focus-visible{
+      outline: 3px solid rgba(59,130,246,.55);
+      outline-offset: 3px;
+    }
+    .btn:active{
+      transform: translateY(0);
+      filter: brightness(1.03);
+    }
+    /* When a button is clicked, keep "pressed" clarity during the click */
+    .btn.preview:active{
+      background: rgba(59,130,246,.18);
+      border-color: rgba(59,130,246,.45);
+    }
+    html[data-theme="dark"] .btn.preview:active{
+      background: rgba(59,130,246,.22);
+      border-color: rgba(59,130,246,.50);
+    }
+
+    .note{
+      padding: 0 12px 12px 12px;
+      font-size: .88rem;
+      opacity: .78;
+      line-height: 1.45;
+    }
+
+    /* Modal preview: 85% of screen */
+    .modal{
+      position: fixed;
+      inset: 0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.58);
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal.open{ display:flex; }
+
+    .modal-card{
+      width: 85vw;
+      height: 85vh;
+      max-width: 1400px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 24px 80px rgba(0,0,0,.38);
+      display:flex;
+      flex-direction: column;
+    }
+    html[data-theme="dark"] .modal-card{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,24,39,.92);
+    }
+    @media (max-width: 980px){
+      .modal-card{ width: 94vw; height: 86vh; }
+    }
+
+    .modal-head{
+      padding: 12px 12px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      background:
+        radial-gradient(1200px 260px at 10% 0%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 240px at 90% 0%, rgba(59,130,246,.20), transparent 58%),
+        rgba(255,255,255,.60);
+    }
+    html[data-theme="dark"] .modal-head{
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(1200px 260px at 10% 0%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 240px at 90% 0%, rgba(59,130,246,.22), transparent 58%),
+        rgba(17,24,39,.60);
+    }
+
+    .modal-title{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .modal-title strong{
+      font-size: .95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70vw;
+    }
+    .modal-actions{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      flex: 0 0 auto;
+    }
+    .modal-actions button{
+      border-radius: 999px;
+      padding: 8px 10px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.62);
+      cursor:pointer;
+      font-size: .85rem;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      transition: transform .12s ease;
+    }
+    .modal-actions button:hover{ transform: translateY(-1px); }
+    html[data-theme="dark"] .modal-actions button{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,24,39,.52);
+    }
+
+    .modal-body{ flex: 1 1 auto; }
+    .modal-body iframe{
+      width:100%;
+      height:100%;
+      border: none;
+      background: transparent;
+    }
+
+    .modal-foot{
+      padding: 10px 12px;
+      font-size: .86rem;
+      opacity: .82;
+      line-height: 1.45;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    html[data-theme="dark"] .modal-foot{
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- ================= HEADER / NAV ================= -->
+    <header class="top-nav">
+      <div class="brand">
+        <img src="/assets/images/Tulane_University_Logo.svg.png"
+             class="nav-logo"
+             alt="Tulane University Logo" />
+        <a href="index.html" class="brand-name-link">
+          <span>Dipendranath Mahato</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="top-nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="utrgv.html">UTRGV</a>
+        <a href="presentations.html">Presentations</a>
+
+        <div class="dropdown">
+          <button class="dropbtn">
+            More <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="outreach-services.html">Outreach &amp; Services</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="resources.html" aria-current="page">Resources</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="controls">
+        <button class="pill-button secondary theme-toggle" type="button" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+          <span>Dark</span>
+        </button>
+
+        <a href="cv.html" class="pill-button primary cv-button">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>CV</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ================= LAYOUT ================= -->
+    <main class="layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="avatar">
+          <img src="/assets/images/PXL_20250330_220427523-1575x2800-compressed.jpg"
+               alt="Dipendranath Mahato" />
+          <!--<div class="status-chip">
+            IN JOB MARKET
+          </div>-->
+        </div>
+
+        <div class="name">Dipendranath Mahato</div>
+        <div class="title">Ph.D. Candidate in Mathematics</div>
+        <div class="affiliation">
+          <strong>Tulane University</strong><br />
+          Department of Mathematics
+        </div>
+
+        <div class="research-area-block">
+          <div class="research-area-title">
+            <i class="ai ai-academic-cap"></i>
+            <span>Research Areas</span>
+          </div>
+          <div class="research-chips">
+            <a href="research.html#commutative" class="chip">Commutative Algebra</a>
+            <a href="research.html#algebraic-geometry" class="chip">Algebraic Geometry</a>
+            <a href="research.html#combinatorial" class="chip">Combinatorial Algebra</a>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Contact</h3>
+          <ul class="info-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <span><a href="mailto:dmahato@tulane.edu">dmahato@tulane.edu</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <!-- ✅ Email corrected here -->
+              <span><a href="mailto:dipendranathmahato13@gmail.com">dipendranathmahato13@gmail.com</a></span>
+            </li>
+            <li>
+              <i class="fa-regular fa-building"></i>
+              <span>Office 416-J, Gibson Hall<br />Department of Mathematics</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>New Orleans-70118, LA, USA</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Online</h3>
+          <div class="social-links">
+            <a href="https://github.com/dipendranathmahato" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=dRoXm28AAAAJ" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            <a href="https://orcid.org/0000-0003-4122-2622" aria-label="ORCID"><i class="fa-brands fa-orcid"></i></a>
+            <a href="https://www.linkedin.com/in/dipendranathmahato" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.researchgate.net/profile/Dipendranath-Mahato-2" aria-label="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a href="https://arxiv.org/search/?query=Mahato%2C+Dipendranath&searchtype=author&abstracts=show&order=-announced_date_first&size=50" aria-label="arXiv"><i class="ai ai-arxiv"></i></a>
+            <a href="https://tulane.academia.edu/DipendranathMahato" aria-label="Academia"><i class="ai ai-academia"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <section class="main">
+        <div class="res-hero">
+          <h1>Resources</h1>
+          <p>
+            Two columns: <b>Favorite Working Sites and Resources</b> and <b>Favorite reading Materials</b>.
+            Each item has a <b>Preview</b> button (opens an 85% in-page preview) and a <b>Link</b> button to visit the site.
+          </p>
+        </div>
+
+        <div class="res-tools">
+          <div class="res-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="resSearch" type="text" placeholder="Search resources (Vakil, OEIS, CTAN, symbolic powers…)" autocomplete="off" />
+          </div>
+          <div class="res-hint">
+            If Preview is blank, that site likely blocks embedding.
+          </div>
+        </div>
+
+        <div class="cols">
+          <!-- Column 1 -->
+          <div class="col">
+            <div class="col-head">
+              <div>
+                <h2>Favorite Working Sites and Resources</h2>
+                <div class="meta"><span id="countWork">0</span> items</div>
+              </div>
+            </div>
+            <div class="pill-list" id="workList"></div>
+            <div class="note">
+              Tip: Preview keeps you here; Link navigates to the page.
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="col">
+            <div class="col-head">
+              <div>
+                <h2>Favorite reading Materials</h2>
+                <div class="meta"><span id="countRead">0</span> items</div>
+              </div>
+            </div>
+            <div class="pill-list" id="readList"></div>
+            <div class="note">
+              PDFs usually preview well; some websites block embedding.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          © <span id="year"></span> Copyright @ Dipendranath Mahato —
+          Made on <a href="https://pages.github.com/">GitHub Pages</a>.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= Preview Modal (85%) ================= -->
+  <div class="modal" id="previewModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Resource preview">
+      <div class="modal-head">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye" style="opacity:.75;"></i>
+          <strong id="modalTitle">Preview</strong>
+        </div>
+        <div class="modal-actions">
+          <button id="modalCloseBtn" type="button">
+            <i class="fa-solid fa-xmark"></i> Close
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe id="modalFrame" title="Embedded preview" src="about:blank"></iframe>
+      </div>
+      <div class="modal-foot" id="modalFoot">
+        If the preview area stays blank, the site likely blocks embedding. Use the Link button instead.
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // ----- Footer year -----
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    // ----- Mobile hamburger toggle -----
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.querySelector('.top-nav-links');
+  
+    function closeMobileMenu() {
+      if (!navLinks) return;
+      navLinks.classList.remove('open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    }
+  
+    if (navToggle && navLinks) {
+      // keep aria in sync (nice for accessibility)
+      navToggle.setAttribute('aria-expanded', 'false');
+  
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+  
+      // close when clicking a link
+      navLinks.addEventListener('click', (event) => {
+        if (event.target.tagName.toLowerCase() === 'a') closeMobileMenu();
+      });
+  
+      // ✅ close while scrolling / swiping
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        if (!navLinks.classList.contains('open')) return;
+        const y = window.scrollY;
+        if (Math.abs(y - lastY) > 8) closeMobileMenu(); // small threshold prevents jitter-close
+        lastY = y;
+      }, { passive: true });
+  
+      // iOS/Android sometimes scroll via touchmove before scroll fires
+      window.addEventListener('touchmove', () => {
+        if (navLinks.classList.contains('open')) closeMobileMenu();
+      }, { passive: true });
+    }
+
+    // ----- "More" dropdown click toggle -----
+    const dropdown = document.querySelector('.dropdown');
+    const dropbtn  = dropdown ? dropdown.querySelector('.dropbtn') : null;
+    if (dropbtn) {
+      dropbtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dropdown.classList.toggle('dropdown-open');
+      });
+    }
+    document.addEventListener('click', (event) => {
+      if (dropdown && !dropdown.contains(event.target)) dropdown.classList.remove('dropdown-open');
+    });
+
+    // ----- DARK MODE TOGGLE -----
+    const root        = document.documentElement;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const THEME_KEY   = 'dm-theme';
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      if (!themeToggle) return;
+      const icon  = themeToggle.querySelector('i');
+      const label = themeToggle.querySelector('span');
+      if (theme === 'dark') {
+        if (icon) icon.className = 'fa-solid fa-sun';
+        if (label) label.textContent = 'Light';
+      } else {
+        if (icon) icon.className = 'fa-solid fa-moon';
+        if (label) label.textContent = 'Dark';
+      }
+    }
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    applyTheme((savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : 'light');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next    = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    }
+
+    // ================== DATA ==================
+    // per your earlier request: keep only the arXiv commutative algebra one (remove generic arXiv homepage)
+    const WORKING = [
+      { title: "arXiv — Commutative Algebra", url: "https://arxiv.org/list/math.AC/recent", icon: "ai ai-arxiv" },
+      { title: "MathSciNet", url: "https://mathscinet.ams.org/mathscinet/publications-search", icon: "fa-solid fa-book" },
+      { title: "commalg.org", url: "https://www.commalg.org/", icon: "fa-solid fa-people-group" },
+      { title: "AMS Sectional Meetings", url: "https://www.ams.org/meetings/sectional/sectional.html", icon: "fa-solid fa-calendar-days" },
+      { title: "Commutative Diagram (tikzcd)", url: "https://q.uiver.app/", icon: "fa-solid fa-diagram-project" },
+      { title: "LaTeX Table Generator", url: "https://www.tablesgenerator.com/", icon: "fa-solid fa-table" },
+      { title: "MathJax", url: "https://www.mathjax.org/", icon: "fa-solid fa-square-root-variable" },
+      { title: "CTAN", url: "https://ctan.org/", icon: "fa-solid fa-box-archive" },
+      { title: "OEIS", url: "https://oeis.org/", icon: "fa-solid fa-list-ol" },
+      { title: "TWOPLES (Directed Reading Program)", url: "https://sites.google.com/view/twoples/about/past-years?authuser=0", icon: "fa-solid fa-graduation-cap" },
+      { title: "AMS Mathematical Opportunity", url: "https://www.ams.org/opportunities", icon: "fa-solid fa-handshake" }
+    ];
+
+    const READING = [
+      { title: "Expository Papers — Keith Conrad", url: "https://kconrad.math.uconn.edu/", icon: "fa-solid fa-feather" },
+      { title: "Class Field Theory — K. S. Kedlaya", url: "https://kskedlaya.org/", icon: "fa-solid fa-landmark" },
+      { title: "Algebraic Number Theory — J. S. Milne", url: "https://www.jmilne.org/math/CourseNotes/ant.html", icon: "fa-solid fa-book-open" },
+      { title: "FOAG — Ravi Vakil (hub)", url: "https://math216.wordpress.com/", icon: "fa-solid fa-compass-drafting" },
+      { title: "The Rising Sea (FOAG PDF)", url: "https://math.stanford.edu/~vakil/216blog/FOAGnov1817public.pdf", icon: "fa-solid fa-water" },
+      { title: "Algebraic Geometry — Andreas Gathmann", url: "https://agag-gathmann.math.rptu.de/de/alggeom.php", icon: "fa-solid fa-chalkboard" },
+      { title: "Symbolic Powers — Eloísa Grifo (PDF)", url: "https://eloisagrifo.github.io/SymbolicPowers.pdf", icon: "fa-solid fa-infinity" },
+      { title: "Interpolation Problems — Jack Huizenga (PDF)", url: "https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/1/167257/files/2023/06/InterpolationNotes.pdf", icon: "fa-solid fa-bullseye" }
+    ];
+
+    // ================== DOM ==================
+    const workList = document.getElementById("workList");
+    const readList = document.getElementById("readList");
+    const countWork = document.getElementById("countWork");
+    const countRead = document.getElementById("countRead");
+    const searchEl = document.getElementById("resSearch");
+
+    // modal
+    const modal = document.getElementById("previewModal");
+    const modalFrame = document.getElementById("modalFrame");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalFoot = document.getElementById("modalFoot");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+    let query = "";
+
+    function iconHTML(cls){
+      if (!cls) return '<i class="fa-solid fa-link"></i>';
+      return `<i class="${cls}"></i>`;
+    }
+
+    function matches(item){
+      const q = query.trim().toLowerCase();
+      if (!q) return true;
+      const hay = `${item.title} ${item.url}`.toLowerCase();
+      return hay.includes(q);
+    }
+
+    function openPreview(item){
+      if (!item) return;
+      modalTitle.textContent = item.title;
+      modalFoot.textContent = item.url;
+      modalFrame.src = item.url;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+    function closePreview(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalFrame.src = "about:blank";
+    }
+
+    modalCloseBtn.addEventListener("click", closePreview);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closePreview(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("open")) closePreview();
+    });
+
+    function pillRowHTML(item){
+      return `
+        <div class="pill-row">
+          <div class="pill-main">
+            <div class="dot">${iconHTML(item.icon)}</div>
+            <div class="pill-title" title="${item.title}">${item.title}</div>
+          </div>
+
+          <div class="pill-actions">
+            <button class="btn preview" type="button" data-action="preview">
+              <i class="fa-solid fa-eye"></i> Preview
+            </button>
+            <a class="btn" href="${item.url}" target="_self" rel="noopener" data-action="link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Link
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderOneColumn(container, items){
+      container.innerHTML = "";
+      items.forEach(item => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = pillRowHTML(item);
+        const row = wrapper.firstElementChild;
+
+        const previewBtn = row.querySelector('button[data-action="preview"]');
+        previewBtn.addEventListener("click", () => openPreview(item));
+
+        container.appendChild(row);
+      });
+    }
+
+    function render(){
+      const w = WORKING.filter(matches);
+      const r = READING.filter(matches);
+
+      countWork.textContent = w.length;
+      countRead.textContent = r.length;
+
+      renderOneColumn(workList, w);
+      renderOneColumn(readList, r);
+    }
+
+    searchEl.addEventListener("input", (e) => {
+      query = e.target.value || "";
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
